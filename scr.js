@@ -53,9 +53,14 @@ const creationPage = (topic) => {
         divCol.appendChild(card);
         card.className = "card shadow-sm h-100";
         const img = document.createElement("img");
-        card.appendChild(img);
+        const a = document.createElement("a");
+        card.appendChild(a);
+        a.appendChild(img);
         img.setAttribute("src", photo.src.medium);
-        img.className = "h-75";
+        a.setAttribute("href", `./details.html?id=${photo.id}&q=${topic}`);
+        a.className = "h-75";
+        img.className = "w-100 h-100";
+        img.style.cursor = "pointer";
         img.style.objectFit = "cover";
         const cardBody = document.createElement("div");
         card.appendChild(cardBody);
@@ -88,3 +93,15 @@ const creationH2 = () => {
   h2ToInsert.innerText = "No photo found";
   section.appendChild(h2ToInsert);
 };
+
+// const goToDetails = (e, resultObj) => {
+//   let id;
+//   const urlImg = e.target.getAttribute("src");
+//   resultObj.photos.forEach((photo) => {
+//     if (photo.src.medium === urlImg) {
+//       id = photo.id;
+//     }
+//   });
+//   e.target.setAttribute("href", `./detail.html?id=${id}`);
+//   console.log(id);
+// };
